@@ -1,38 +1,39 @@
-const numeroSenha = documento.querSelector('.parametro-senha_texto');
-let tamanhoSenha = 12
-numeroSenha.textContent= tamanhoSenha;
-const letrasMaiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const letrasMinusculas = 'abcdefghijklmnopqrstuvwxyz';
+const numeroSenha = document.querySelector('.parametro-senha__texto');
+let tamanhoSenha = 12;
+numeroSenha.textContent = tamanhoSenha;
+const letrasMaiusculas = 'ABCDEFGHIJKLMNOPQRSTUVXYWZ';
+const letrasMinusculas = 'abcdefghijklmnopqrstuvxywz';
 const numeros = '0123456789';
-const símbolos = '!@#$%*?';
-const botoes = document.querySelectorAll('.parametro-senha_botao');
-const compoSenha = document.querySelector('#compo-senha');
-const checkbox= document.querySelectorAll('.checkbox');
+const simbolos = '!@%*?';
+const botoes = document.querySelectorAll('.parametro-senha__botao');
+const campoSenha = document.querySelector('#campo-senha');
+const checkbox = document.querySelectorAll('.checkbox');
 const forcaSenha = document.querySelector('.forca');
 
-botoes[0].onclick= diminuiTamanho;
-botoes[1].onclick= aumentaTamanho;
+
+botoes[0].onclick = diminuiTamanho;
+botoes[1].onclick = aumentaTamanho;
 
 function diminuiTamanho() {
-    if(tamanhoSenha > 1) {
+    if (tamanhoSenha > 1) {
+        // tamanhoSenha = tamanhoSenha-1;
         tamanhoSenha--;
-    
     }
+    numeroSenha.textContent = tamanhoSenha;
+    geraSenha();
 }
-numeroSenha.textContent = tamanhoSenha;
-geraSenha();
-
-function aumentarTamanho() {
-    if(tamanhoSenha > 20) {
+function aumentaTamanho() {
+    if (tamanhoSenha < 20) {
+        // tamanhoSenha = tamanhoSenha+1;
         tamanhoSenha++;
-    
     }
-}
-numeroSenha.textContent = tamanhoSenha;
-geraSenha();
 
-for(1=0; 1< checkbox.length; 1++){
-    checkbox[1].onclick = geraSenha
+    numeroSenha.textContent = tamanhoSenha;
+    geraSenha();
+}
+
+for (i = 0; i < checkbox.length; i++) {
+    checkbox[i].onclick = geraSenha;
 }
 
 geraSenha();
@@ -58,9 +59,10 @@ function geraSenha() {
         senha = senha + alfabeto[numeroAleatorio];
     }
     campoSenha.value = senha;
-    classificaSenha(alfabeto.length); 
+    classificaSenha();
+
 }
- 
+
 function classificaSenha(){
     forcaSenha.classList.remove('fraca','media','forte');
     if (tamanhoSenha > 11){
